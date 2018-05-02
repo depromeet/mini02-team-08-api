@@ -26,6 +26,7 @@ public class AccountService {
   }
 
   // FIXME not yet implemented
-  public void delete() {
+  public void delete(Long no) {
+    accountRepository.delete(no);
   }
 }

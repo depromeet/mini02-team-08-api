@@ -3,6 +3,7 @@ package com.depromeet.donkey.account;
 import com.depromeet.donkey.domain.donkey.Account;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +34,14 @@ public class AccountController {
   }
 
   // FIXME not yet implemented
-  @PutMapping("/{id}")
-  public void update(@PathVariable Long id) {
+  @PutMapping("/{no}")
+  public void update(@PathVariable Long no) {
     accountService.update();
+  }
+
+  // FIXME Authorization
+  @DeleteMapping("/{id}")
+  public void delete(@PathVariable Long no) {
+    accountService.delete(no);
   }
 }
