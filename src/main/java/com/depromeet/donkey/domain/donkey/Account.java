@@ -1,6 +1,8 @@
 package com.depromeet.donkey.domain.donkey;
 
 
+import com.depromeet.donkey.account.AccountRequest;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -33,4 +35,15 @@ public class Account {
   @LastModifiedDate @Column(name = "last_access_at") LocalDateTime lastAccessAt;
   @CreatedDate @Column(name = "created_at") LocalDateTime createdAt;
   @CreatedDate @LastModifiedDate @Column(name = "updated_at") LocalDateTime updatedAt;
+
+  public static Account from(AccountRequest accountRequest) {
+    Account account = new Account();
+    account.setCellphone(accountRequest.getCellphone());
+    account.setName(accountRequest.getName());
+    account.setPassword(accountRequest.getPassword());
+
+    account.setUpdatedAt(LocalDateTime.now());
+    account.setCreatedAt(LocalDateTime.now());
+    return account;
+  }
 }

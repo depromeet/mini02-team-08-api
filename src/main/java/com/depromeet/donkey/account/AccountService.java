@@ -21,7 +21,8 @@ public class AccountService {
   }
 
   // FIXME not yet implemented
-  public void insert() {
+  public void insert(AccountRequest accountRequest) {
+    accountRepository.save(Account.from(accountRequest));
   }
 
   // FIXME not yet implemented

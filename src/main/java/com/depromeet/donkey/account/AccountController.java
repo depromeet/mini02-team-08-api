@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 public class AccountController {
   @Autowired AccountService accountService;
 
-  // FIXME not yet implemented
   @GetMapping
   public List<Account> fetchAll() {
     return accountService.findAll();
@@ -28,8 +28,8 @@ public class AccountController {
 
   // FIXME not yet implemented
   @PostMapping
-  public void insert() {
-    accountService.insert();
+  public void insert(@RequestBody AccountRequest accountRequest) {
+    accountService.insert(accountRequest);
   }
 
   // FIXME not yet implemented
