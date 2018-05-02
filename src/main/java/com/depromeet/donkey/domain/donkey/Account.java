@@ -1,4 +1,4 @@
-package com.depromeet.donkey.entity;
+package com.depromeet.donkey.domain.donkey;
 
 
 import org.springframework.data.annotation.CreatedDate;

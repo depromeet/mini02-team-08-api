@@ -1,4 +1,4 @@
-package com.depromeet.donkey;
+package com.depromeet.donkey.config;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(
     entityManagerFactoryRef = "donkeyEntityManagerFactory",
     transactionManagerRef = "donkeyTransactionManager",
-    basePackages = "com.depromeet.donkey.entity"
+    basePackages = "com.depromeet.donkey.domain.donkey"
 )
 public class DonkeyDatabaseConfig {
 
@@ -33,7 +33,7 @@ public class DonkeyDatabaseConfig {
 
     factoryBean.setDataSource(donkeyDataSource());
     factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
-    factoryBean.setPackagesToScan("com.depromeet.donkey.entity");
+    factoryBean.setPackagesToScan("com.depromeet.donkey.domain.donkey");
 
     return factoryBean;
   }

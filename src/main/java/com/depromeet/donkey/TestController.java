@@ -1,7 +1,7 @@
 package com.depromeet.donkey;
 
-import com.depromeet.donkey.entity.Account;
-import com.depromeet.donkey.entity.repository.AccountRepository;
+import com.depromeet.donkey.domain.donkey.Account;
+import com.depromeet.donkey.domain.donkey.repository.AccountRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
