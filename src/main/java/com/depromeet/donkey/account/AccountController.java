@@ -40,7 +40,7 @@ public class AccountController {
   }
 
   // FIXME Authorization
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/{no}")
   public void delete(@PathVariable Long no) {
     accountService.delete(no);
   }
