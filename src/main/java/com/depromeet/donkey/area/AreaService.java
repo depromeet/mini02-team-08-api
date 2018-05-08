@@ -31,7 +31,7 @@ public class AreaService {
    */
   public Area findOneAndIfNotExistCreate(String si, String gu, String dong) {
     return areaRepository.findAreaBySiAndGuAndDong(si, gu, dong)
-        .orElse(areaRepository.save(Area.from(si, gu, dong)));
+        .orElseGet(() -> areaRepository.save(Area.from(si, gu, dong)));
   }
 
   public void insert(AreaRequest areaRequest) {

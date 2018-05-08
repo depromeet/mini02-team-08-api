@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,10 @@ import lombok.Setter;
 @Setter @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "area")
+@Table(
+    name = "area",
+    uniqueConstraints = {@UniqueConstraint(columnNames = {"si", "gu", "dong"})}
+)
 public class Area {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
