@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: donkey
+-- Host: 192.168.99.100    Database: donkey
 -- ------------------------------------------------------
--- Server version	5.7.19-log
+-- Server version	5.5.5-10.2.14-MariaDB-10.2.14+maria~jessie
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `accounts`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `accounts` (
   `no` bigint(20) NOT NULL AUTO_INCREMENT,
-  `cellphone` varchar(45) DEFAULT NULL,
+  `email` varchar(256) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
   `password` varchar(1024) NOT NULL,
   `last_access_at` datetime DEFAULT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `area` (
   `gu` varchar(256) NOT NULL,
   `dong` varchar(256) NOT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,6 +65,7 @@ CREATE TABLE `area` (
 
 LOCK TABLES `area` WRITE;
 /*!40000 ALTER TABLE `area` DISABLE KEYS */;
+INSERT INTO `area` VALUES (1,'Seoul','Joong-gu','cheongu');
 /*!40000 ALTER TABLE `area` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-04 20:49:59
+-- Dump completed on 2018-05-08 21:07:58

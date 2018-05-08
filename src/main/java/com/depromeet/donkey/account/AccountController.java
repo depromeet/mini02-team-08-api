@@ -27,10 +27,15 @@ public class AccountController {
     return accountService.findAll();
   }
 
-  // FIXME not yet implemented
   @PostMapping
-  public void insert(@RequestBody AccountRequest accountRequest) {
-    accountService.insert(accountRequest);
+  public void signUp(@RequestBody AccountRequest accountRequest) {
+    accountService.signUp(accountRequest);
+  }
+
+  // FIXME need global exception handler
+  @PostMapping("/sign-in")
+  public void signIn(@RequestBody AccountRequest accountRequest) {
+    accountService.signIn(accountRequest);
   }
 
   // FIXME not yet implemented
@@ -40,7 +45,7 @@ public class AccountController {
   }
 
   // FIXME Authorization
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/{no}")
   public void delete(@PathVariable Long no) {
     accountService.delete(no);
   }

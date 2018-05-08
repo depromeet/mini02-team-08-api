@@ -1,4 +1,4 @@
-package com.depromeet.donkey.account;
+package com.depromeet.donkey.area;
 
 import java.io.Serializable;
 
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountRequest implements Serializable {
-  private String email;
-  private String name;
-  private String password;
+public class AreaRequest implements Serializable {
+  private String si;
+  private String gu;
+  private String dong;
 }
