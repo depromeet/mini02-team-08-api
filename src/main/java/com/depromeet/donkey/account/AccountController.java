@@ -44,7 +44,6 @@ public class AccountController {
     accountService.signIn(accountRequest);
   }
 
-
   @ApiOperation(value = "업데이트",
       notes = "미구현")
   // FIXME not yet implemented
