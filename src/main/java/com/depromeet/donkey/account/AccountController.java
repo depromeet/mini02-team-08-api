@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -22,28 +23,38 @@ import lombok.extern.slf4j.Slf4j;
 public class AccountController {
   @Autowired AccountService accountService;
 
+  @ApiOperation(value = "유저목록 조회",
+      notes = "사용 용도 없음. 그냥 만들어 보았음.ㅎㅎ 그리고 쓰면 안됨")
   @GetMapping
-  public List<Account> fetchAll() {
+  public List<AccountResponse> fetchAll() {
     return accountService.findAll();
   }
 
+  @ApiOperation(value = "회원가입",
+      notes = "이메일, 패스워드를 request body 에 담아서 보냅니다.")
   @PostMapping
   public void signUp(@RequestBody AccountRequest accountRequest) {
     accountService.signUp(accountRequest);
   }
 
-  // FIXME need global exception handler
+  @ApiOperation(value = "로그인",
+      notes = "회원가입과 같음")
   @PostMapping("/sign-in")
   public void signIn(@RequestBody AccountRequest accountRequest) {
     accountService.signIn(accountRequest);
   }
 
+
+  @ApiOperation(value = "업데이트",
+      notes = "미구현")
   // FIXME not yet implemented
   @PutMapping("/{no}")
   public void update(@PathVariable Long no) {
     accountService.update();
   }
 
+  @ApiOperation(value = "삭제",
+      notes = "미구현")
   // FIXME Authorization
   @DeleteMapping("/{no}")
   public void delete(@PathVariable Long no) {

@@ -8,20 +8,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountService {
   @Autowired AccountRepository accountRepository;
 
-  public List<Account> findAll() {
-    return accountRepository.findAll();
+  public List<AccountResponse> findAll() {
+    return accountRepository.findAll().stream()
+        .map(AccountResponse::from)
+        .collect(Collectors.toList());
   }
 
   // FIXME not yet implemented
   public void update() {
   }
 
-  // FIXME not yet implemented
   public void signUp(AccountRequest accountRequest) {
     accountRepository.save(Account.from(accountRequest));
   }
