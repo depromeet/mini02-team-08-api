@@ -1,12 +1,17 @@
 package com.depromeet.donkey.post;
 
+import com.depromeet.donkey.account.AccountRequest;
 import com.depromeet.donkey.area.AreaService;
+import com.depromeet.donkey.domain.donkey.Account;
 import com.depromeet.donkey.domain.donkey.Area;
 import com.depromeet.donkey.domain.donkey.Post;
+import com.depromeet.donkey.domain.donkey.Report;
 import com.depromeet.donkey.domain.donkey.repository.PostRepository;
+import com.depromeet.donkey.domain.donkey.repository.ReportRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +21,7 @@ import javax.transaction.Transactional;
 @Service
 public class PostService {
   @Autowired PostRepository postRepository;
+  @Autowired ReportRepository reportRepository;
   @Autowired AreaService areaService;
 
   @Transactional
@@ -35,4 +41,7 @@ public class PostService {
   public void update() {
   }
 
+  public void reportInsert(Long accountNo, Long postNo) {
+	  reportRepository.save(Report.from(accountNo, postNo));
+	  }
 }

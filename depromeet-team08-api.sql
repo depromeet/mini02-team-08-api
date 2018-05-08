@@ -110,3 +110,9 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-05-08 21:07:58
+CREATE TABLE `donkey`.`reports` (
+  `account_no` INT NOT NULL,
+  `post_no` INT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  PRIMARY KEY (`account_no`, `post_no`));
+

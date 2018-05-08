@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.depromeet.donkey.area.AreaRequest;
+
 import java.util.List;
 
 import io.swagger.annotations.ApiOperation;
@@ -55,6 +57,12 @@ public class PostController {
   @PutMapping("/{no}")
   public void update(@PathVariable Long no) {
     postService.update();
+  }
+  @ApiOperation(value = "신고하기",
+	      notes = "신고하기")
+  @PostMapping("/reportInsert/{accountNo}/{postNo}")
+  public void reportInsert(@PathVariable Long accountNo, @PathVariable Long postNo) {
+	  postService.reportInsert(accountNo, postNo);
   }
 
 //  @ApiOperation(value = "삭제",

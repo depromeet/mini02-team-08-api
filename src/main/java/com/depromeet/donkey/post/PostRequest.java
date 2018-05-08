@@ -23,4 +23,7 @@ public class PostRequest implements Serializable {
   private String si;
   private String gu;
   private String dong;
+
+  // for report
+  private Long postNo;
 }
