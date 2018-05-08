@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountRequest implements Serializable {
-  private String cellphone;
+  private String email;
   private String name;
   private String password;
 }

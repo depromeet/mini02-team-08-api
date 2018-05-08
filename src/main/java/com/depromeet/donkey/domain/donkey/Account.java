@@ -28,7 +28,7 @@ public class Account {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "no") Long no;
 
-  @Column(name = "cellphone") String cellphone;
+  @Column(name = "email") String email;
   @Column(name = "name") String name;
   @Column(name = "password") String password;
 
@@ -38,7 +38,7 @@ public class Account {
 
   public static Account from(AccountRequest accountRequest) {
     Account account = new Account();
-    account.setCellphone(accountRequest.getCellphone());
+    account.setEmail(accountRequest.getEmail());
     account.setName(accountRequest.getName());
     account.setPassword(accountRequest.getPassword());
 
