@@ -3,10 +3,13 @@ package com.depromeet.donkey.post;
 import com.depromeet.donkey.domain.donkey.Post;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import static com.depromeet.donkey.util.LocalDateTimeToInstant.toInstant;
 
 @Data
 @NoArgsConstructor
@@ -19,6 +22,8 @@ public class PostResponse implements Serializable {
   private String content;
   private String nickname;
   private Long accountNo;
+  private Instant createdAt;
+  private Instant expiredAt;
 
   public static PostResponse from(Post post) {
     PostResponse postResponse = new PostResponse();
@@ -29,6 +34,8 @@ public class PostResponse implements Serializable {
     postResponse.setContent(post.getContent());
     postResponse.setNickname(post.getNickname());
     postResponse.setAccountNo(post.getAccountNo());
+    postResponse.setCreatedAt(toInstant(post.getCreatedAt()));
+    postResponse.setExpiredAt(toInstant(post.getExpiredAt()));
     return postResponse;
   }
 }
