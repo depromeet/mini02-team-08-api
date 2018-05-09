@@ -60,9 +60,9 @@ public class PostController {
   }
   @ApiOperation(value = "신고하기",
 	      notes = "신고하기")
-  @PostMapping("/reportInsert/{accountNo}/{postNo}")
-  public void reportInsert(@PathVariable Long accountNo, @PathVariable Long postNo) {
-	  postService.reportInsert(accountNo, postNo);
+  @PostMapping("/{postNo}/reports")
+  public void report(@RequestBody ReportRequest reportRequest, @PathVariable Long postNo) {
+	  postService.report(reportRequest, postNo);
   }
 
 //  @ApiOperation(value = "삭제",

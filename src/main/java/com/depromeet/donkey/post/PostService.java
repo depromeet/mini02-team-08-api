@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -27,6 +28,13 @@ public class PostService {
   @Transactional
   public List<PostResponse> findAll(String si, String gu, String dong) {
     return postRepository.findAllByArea(areaService.findOneAndIfNotExistCreate(si, gu, dong))
+    	.filter(new Predicate<Post>() {
+			@Override
+			public boolean test(Post t) {
+				boolean securePost = t.getReportsList().size()<6;
+				return securePost;
+			}
+		})
         .map(PostResponse::from)
         .collect(Collectors.toList());
   }
@@ -41,7 +49,7 @@ public class PostService {
   public void update() {
   }
 
-  public void reportInsert(Long accountNo, Long postNo) {
-	  reportRepository.save(Report.from(accountNo, postNo));
+  public void report(ReportRequest reportRequest, Long postNo) {
+	  reportRepository.save(Report.from(reportRequest, postNo));
 	  }
 }
