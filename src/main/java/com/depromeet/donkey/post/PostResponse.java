@@ -17,6 +17,7 @@ import static com.depromeet.donkey.util.LocalDateTimeToInstant.toInstant;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostResponse implements Serializable {
+  private Long postNo;
   private Integer areaNo;
   private Float lat;
   private Float lng;
@@ -31,6 +32,7 @@ public class PostResponse implements Serializable {
 
   public static PostResponse from(Post post) {
     PostResponse postResponse = new PostResponse();
+    postResponse.setPostNo(post.getNo());
     postResponse.setAreaNo(post.getArea().getNo());
     postResponse.setLat(post.getLat());
     postResponse.setLng(post.getLng());
