@@ -7,7 +7,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,8 +24,9 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Setter @Getter
+@Setter @Getter @ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "posts")
@@ -47,7 +47,7 @@ public class Post {
   @JoinColumn(name = "area_no", updatable = false)
   private Area area;
 
-  @OneToMany
+  @OneToMany(fetch = FetchType.EAGER)
   @JoinColumn(name = "post_no", updatable = false)
   private List<Report> reportsList;
 

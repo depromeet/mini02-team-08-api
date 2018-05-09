@@ -4,6 +4,8 @@ import com.depromeet.donkey.domain.donkey.Post;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +27,8 @@ public class PostResponse implements Serializable {
   private Instant createdAt;
   private Instant expiredAt;
 
+  private List<ReportResponse> reportResponse;
+
   public static PostResponse from(Post post) {
     PostResponse postResponse = new PostResponse();
     postResponse.setAreaNo(post.getArea().getNo());
@@ -36,6 +40,12 @@ public class PostResponse implements Serializable {
     postResponse.setAccountNo(post.getAccountNo());
     postResponse.setCreatedAt(toInstant(post.getCreatedAt()));
     postResponse.setExpiredAt(toInstant(post.getExpiredAt()));
+
+    postResponse.setReportResponse(
+        post.getReportsList().stream()
+            .map(ReportResponse::from)
+            .collect(Collectors.toList())
+    );
     return postResponse;
   }
 }
